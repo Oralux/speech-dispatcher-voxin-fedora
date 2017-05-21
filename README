@@ -15,6 +15,6 @@ cd speech-dispatcher-voxin
 # the build.x86_64 directory contains the x86_64 package
 
 * copy the packages to the voxin installer
-DISTRIB_RELEASE=25
-rm $VOXIN_INSTALLER/packages/fedora.$DISTRIB_RELEASE/speech-dispatcher-voxin*
-cp build.{i686,x86_64}/*rpm $VOXIN_INSTALLER/packages/fedora.$DISTRIB_RELEASE
+DISTRIB=fedora.25
+rm $VOXIN_INSTALLER/packages/$DISTRIB/speech-dispatcher-voxin*
+cp build.{i686,x86_64}/*rpm $VOXIN_INSTALLER/packages/$DISTRIB
