@@ -1,20 +1,12 @@
 Helper scripts to build the speech-dispatcher-voxin package.
 
-Example: packages for Fedora 25
+Example: package for Fedora 26
 
-* build the i686 package under VM1 (Fedora 32 bits)
+* build the x86_64 package
 cd speech-dispatcher-voxin
-./build.sh
+./release.sh
 
-# the build.i686 directory contains the i686 package
-
-* build the x86_64 package under VM2 (e.g. Fedora 64 bits)
-cd speech-dispatcher-voxin
-./build.sh
-
-# the build.x86_64 directory contains the x86_64 package
-
-* copy the packages to the voxin installer
-DISTRIB=fedora.25
+* copy the package to the voxin installer
+DISTRIB=fedora.26
 rm $VOXIN_INSTALLER/packages/$DISTRIB/speech-dispatcher-voxin*
-cp build.{i686,x86_64}/*rpm $VOXIN_INSTALLER/packages/$DISTRIB
+cp build.x86_64/speech-dispatcher-voxin*rpm $VOXIN_INSTALLER/packages/$DISTRIB

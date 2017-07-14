@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:          speech-dispatcher
-Version:       0.8.6
+Version:       0.8.7
 Release:       1%{?dist}
 Summary:       To provide a high-level device independent layer for speech synthesis
 Group:         System Environment/Libraries
@@ -32,10 +32,6 @@ BuildRequires: python3-setuptools
 BuildRequires: texinfo
 BuildRequires: systemd
 BuildRequires: libvoxin-devel
-
-%ifnarch s390 s390x
-BuildRequires: libraw1394
-%endif
 
 Requires: speech-dispatcher-espeak
 Requires(post): systemd
@@ -80,7 +76,7 @@ BuildArch: noarch
 speechd documentation
 
 %package utils
-Summary:        Documentation for speech-dispatcher
+Summary:        Various utilities for speech-dispatcher
 License:        GPLv2+
 Group:          Applications/System
 Requires:       %{name}%{_isa} = %{version}-%{release}
@@ -265,8 +261,17 @@ fi
 %{_libdir}/speech-dispatcher-modules/sd_ibmtts
 
 %changelog
-* Sat May 20 2017 Gilles Casse <gcasse@oralux.org> 0.8.6-1voxin1
+* Fri Jul 14 2017 Gilles Casse <gcasse@oralux.org> 0.8.7-1voxin1
 - build speech-dispatcher-voxin
+
+* Tue May 16 2017 Peter Robinson <pbrobinson@fedoraproject.org> 0.8.7-1
+- 0.8.7
+
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 0.8.6-2
+- Rebuild for Python 3.6
 
 * Wed Dec  7 2016 Peter Robinson <pbrobinson@fedoraproject.org> 0.8.6-1
 - 0.8.6

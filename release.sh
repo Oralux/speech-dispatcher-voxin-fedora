@@ -6,8 +6,9 @@ PN1=speech-dispatcher-voxin
 unset PV
 
 PV=$(rpm -q speech-dispatcher | sed -r 's/speech-dispatcher-([^-]*).*/\1/')
+OV=$(awk -F= '/VERSION_ID/{print $2}' /etc/os-release)
 
-LIST="wget fedpkg rpmlint"
+LIST="wget fedpkg rpmlint rpm-build"
 rpm -q $LIST &> /dev/null    
 if [ "$?" != "0" ]; then
     echo "Install the following packages: $LIST"
@@ -30,7 +31,7 @@ function build_pkg() {
     cp ~/rpmbuild/SOURCES/speech-dispatcher* ~/rpmbuild/SOURCES/sound-icons* fedora/* $BUILD_DIR
     
     pushd $BUILD_DIR
-    fedpkg --release f25 local
+    fedpkg --release f$OV local
     find . -name "$PN*rpm" | while read i; do echo "--> $i"; rpmlint $i; done
     popd
 }
